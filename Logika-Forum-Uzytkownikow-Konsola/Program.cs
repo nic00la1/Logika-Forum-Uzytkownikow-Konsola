@@ -70,18 +70,29 @@ namespace LogikaForumUzytkownikowKonsola
     {
         static void Main(string[] args)
         {
-            // Tworzenie instancji klasy Osoba
+            // Wyświetlenie liczby zarejestrowanych osób
+            Console.WriteLine($"Liczba zarejestrowanych osób to {Osoba.LiczbaInstancji}");
+
+            // Tworzenie instancji klasy Osoba za pomocą konstruktora bezparametrowego
             Osoba osoba1 = new Osoba();
-            Osoba osoba2 = new Osoba(1, "Jan");
+
+            // Tworzenie instancji klasy Osoba za pomocą konstruktora z dwoma parametrami
+            Console.Write("Wprowadź id: ");
+            int id = int.Parse(Console.ReadLine());
+            Console.Write("Wprowadź imię: ");
+            string imie = Console.ReadLine();
+            Osoba osoba2 = new Osoba(id, imie);
+
+            // Tworzenie instancji klasy Osoba za pomocą konstruktora kopiującego
             Osoba osoba3 = new Osoba(osoba2);
 
-            // Wypisywanie imion
-            osoba1.WypiszImie("Adam");
-            osoba2.WypiszImie("Ewa");
-            osoba3.WypiszImie("Kasia");
+            // Wywołanie metody do wypisania imienia z parametrem "Jan" dla wszystkich utworzonych obiektów
+            osoba1.WypiszImie("Jan");
+            osoba2.WypiszImie("Jan");
+            osoba3.WypiszImie("Jan");
 
-            // Wypisywanie liczby instancji klasy Osoba
-            Console.WriteLine($"Liczba instancji klasy Osoba: {Osoba.LiczbaInstancji}");
+            // Ponowne wyświetlenie liczby zarejestrowanych osób
+            Console.WriteLine($"Liczba zarejestrowanych osób to {Osoba.LiczbaInstancji}");
         }
     }
 }
