@@ -2,13 +2,23 @@
 
 namespace LogikaForumUzytkownikowKonsola
 {
+    /// <summary>
+    /// Klasa reprezentująca osobę w systemie forum użytkowników.
+    /// </summary>
     public class Osoba
     {
+        // Prywatne pola
         private int id;
         private string imie;
+
+        /// <summary>
+        /// Statyczne pole zliczające liczbę instancji klasy Osoba.
+        /// </summary>
         public static int LiczbaInstancji { get; private set; } = 0;
 
-        // Konstruktor bezparametrowy
+        /// <summary>
+        /// Konstruktor bezparametrowy, ustawia wartości domyślne dla pól.
+        /// </summary>
         public Osoba()
         {
             id = 0;
@@ -16,7 +26,11 @@ namespace LogikaForumUzytkownikowKonsola
             LiczbaInstancji++;
         }
 
-        // Konstruktor z dwoma parametrami
+        /// <summary>
+        /// Konstruktor z dwoma parametrami, ustawia wartości dla pól id i imie.
+        /// </summary>
+        /// <param name="id">Identyfikator osoby.</param>
+        /// <param name="imie">Imię osoby.</param>
         public Osoba(int id, string imie)
         {
             this.id = id;
@@ -24,7 +38,10 @@ namespace LogikaForumUzytkownikowKonsola
             LiczbaInstancji++;
         }
 
-        // Konstruktor kopiujący
+        /// <summary>
+        /// Konstruktor kopiujący, tworzy nową instancję na podstawie innej instancji klasy Osoba.
+        /// </summary>
+        /// <param name="innaOsoba">Inna instancja klasy Osoba.</param>
         public Osoba(Osoba innaOsoba)
         {
             this.id = innaOsoba.id;
@@ -32,7 +49,10 @@ namespace LogikaForumUzytkownikowKonsola
             LiczbaInstancji++;
         }
 
-        // Metoda do wypisania imienia
+        /// <summary>
+        /// Metoda do wypisania imienia obiektu klasy Osoba.
+        /// </summary>
+        /// <param name="inneImie">Imię osoby, do której kierowany jest komunikat.</param>
         public void WypiszImie(string inneImie)
         {
             if (string.IsNullOrEmpty(imie))
@@ -50,14 +70,17 @@ namespace LogikaForumUzytkownikowKonsola
     {
         static void Main(string[] args)
         {
+            // Tworzenie instancji klasy Osoba
             Osoba osoba1 = new Osoba();
             Osoba osoba2 = new Osoba(1, "Jan");
             Osoba osoba3 = new Osoba(osoba2);
 
+            // Wypisywanie imion
             osoba1.WypiszImie("Adam");
             osoba2.WypiszImie("Ewa");
             osoba3.WypiszImie("Kasia");
 
+            // Wypisywanie liczby instancji klasy Osoba
             Console.WriteLine($"Liczba instancji klasy Osoba: {Osoba.LiczbaInstancji}");
         }
     }
